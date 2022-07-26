@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Nerts Score App</title>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"></script>
+
+  <link href="style.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">Score Nerts</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="waves-effect waves-light btn new-game-button">New Game</a></li>
+        <li><a class="waves-effect waves-light btn view-graph-button">View Graph</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a class="waves-effect waves-light btn new-game-button">New Game</a></li>
+    <li><a class="waves-effect waves-light btn view-graph-button">View Graph</a></li>
+  </ul>
+
+
+
+  <ul class="collapsible expandable">
+    <li class="active">
+      <div class="collapsible-body">
+        <table>
+          <thead>
+            <tr id="names-row">
+              <!-- is dynamically replaced -->
+              <th> </th> <!-- blank spot -->
+              <th>Name 1</th>
+              <th>Name 2</th>
+              <th>Name 3</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr id="totals-row">
+              <th> Total </th>
+              <td>200</td>
+              <td>50</td>
+              <td>-30</td>
+            </tr>
+            <tr id="this-round-row">
+              <th> This round:
+              </th>
+              <!-- is dynamically replaced -->
+
+              <!--             <td><input type="number"> </td>
+            <td><input type="number"> </td>
+            <td><input type="number"> </td> -->
+            </tr>
+          </tbody>
+        </table>
+        <a class="btn btn-small waves-effect waves-light red " id="next-round-button"><i
+            class="material-icons left">add</i>Next Round (Archive This Round)<i
+            class="material-icons right">add</i></a>
+      </div>
+
+    </li>
+    <li>
+
+      <div class="collapsible-header teal lighten-2">
+        <p class="center-align">
+          Click to View/Hide History
+        </p>
+      </div>
+      <div class="collapsible-body">
+        <table id="history-table" class="striped">
+        </table>
+  </ul>
+
+  <!-- Simple modal dialog for new games -->
+  <dialog id="new-game-dialog">
+    <form method="dialog">
+      <p><label>How many players in the new game?
+          <input id="new-game-num-players-input" type="number" min=2 value=3>
+        </label></p>
+      <div>
+        <button type="submit" class="btn btn-small waves-effect waves-light green" id="new-game-confirm-button"
+          value="confirm">Confirm</button>
+        <button class="btn btn-small waves-effect waves-light red" value="cancel">Cancel</button>
+
+      </div>
+      <input type="submit" style="display:none;" value="confirm" />
+
+    </form>
+  </dialog>
+
+  <!-- Simple modal dialog for altering names -->
+  <dialog id="change-name-dialog">
+    <form method="dialog">
+      <p><label>What's the new name?
+          <input id="change-name-input" type="text">
+        </label></p>
+      <div>
+        <button type="submit" class="btn btn-small waves-effect waves-light green" id="change-name-confirm-button"
+          value="confirm">Confirm</button>
+        <button class="btn btn-small waves-effect waves-light red" value="cancel">Cancel</button>
+
+      </div>
+      <input type="submit" style="display:none;" value="confirm" />
+    </form>
+  </dialog>
+
+  <dialog id="view-graph-dialog">
+    <canvas id="myChart" width="400" height="400"></canvas>
+    <form method="dialog">
+      <div>
+        <button class="btn btn-small waves-effect waves-light red" value="close">Close</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script>
+    M.AutoInit();
+    var elem = document.querySelector('.collapsible.expandable');
+    var instance = M.Collapsible.init(elem, {
+      accordion: false
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      var elems = document.querySelectorAll('.fixed-action-btn');
+      var instances = M.FloatingActionButton.init(elems, {
+        toolbarEnabled: true,
+
+        hoverEnabled: false
+      });
+    });
+
+  </script>
+  <script src="script.js"></script>
+
+  <!--
+  This script places a badge on your repl's full-browser view back to your repl's cover
+  page. Try various colors for the theme: dark, light, red, orange, yellow, lime, green,
+  teal, blue, blurple, magenta, pink!
+  -->
+  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+</body>
+
+</html>
